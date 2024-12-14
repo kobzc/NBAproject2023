@@ -711,7 +711,7 @@ def generate_hist_player_position():
         },
         height=graphic_pattern_height,
         title="Number of players per position",
-    ).update_layout(showlegend=False, yaxis_title="Number of players", title_x=0.5)
+    ).update_layout(showlegend=False, yaxis_title="Number of players")
 
     return chart
 
@@ -794,7 +794,7 @@ def generate_dist_each_pos_box():
             "POS": "Position",
             "PTS": "Points",
         },
-    ).update_layout(yaxis_title="Points", title_x=0.5, showlegend=False)
+    ).update_layout(yaxis_title="Points", showlegend=False)
     return chart
 
 
@@ -812,7 +812,7 @@ def generate_dist_pts_gp():
         },
         template="plotly_dark",
         title="Distribution of points per game in each position",
-    ).update_layout(yaxis_title="Points per game", title_x=0.5, showlegend=False)
+    ).update_layout(yaxis_title="Points per game", showlegend=False)
     return chart
 
 
@@ -848,7 +848,7 @@ def generate_graph_3pm_pos():
         },
         template="plotly_dark",
         title="Distribution of points per game in each position",
-    ).update_layout(yaxis_title="3 Points made", showlegend=False, title_x=0.5)
+    ).update_layout(yaxis_title="3 Points made", showlegend=False)
     return chart
 
 
@@ -1069,31 +1069,27 @@ def generate_graph_bars_defact_pos():
 # 4. Distribuição das médias de bloqueios, roubos de bola e rebotes em cada posição, em um gráfico de dispersão e dispersão 3D.
 @st.cache_resource
 def generate_graph_mean_stl_blk_reb_pos():
-    chart = (
-        px.scatter(
-            data_frame=df_posicoes,
-            x="BLK%",
-            y="STL%",
-            size="REB%",
-            color="POS",
-            color_discrete_sequence=colors,
-            template="plotly_dark",
-            hover_data="POS",
-            labels={
-                "STL%": "Percentage of Steals",
-                "BLK%": "Percentage of Blocks",
-                "REB%": "Percentage of Rebounds",
-            },
-            title="Steal percentage vs block percentage with size proportional to rebounds percentage",
-            text="POS",
-            opacity=0.6,
-        )
-        .update_layout(
-            xaxis=dict(showgrid=True),
-            yaxis=dict(showgrid=True),
-            showlegend=False,
-        )
-        .update_layout(title_x=0.1)
+    chart = px.scatter(
+        data_frame=df_posicoes,
+        x="BLK%",
+        y="STL%",
+        size="REB%",
+        color="POS",
+        color_discrete_sequence=colors,
+        template="plotly_dark",
+        hover_data="POS",
+        labels={
+            "STL%": "Percentage of Steals",
+            "BLK%": "Percentage of Blocks",
+            "REB%": "Percentage of Rebounds",
+        },
+        title="Steal percentage vs block percentage with size proportional to rebounds percentage",
+        text="POS",
+        opacity=0.6,
+    ).update_layout(
+        xaxis=dict(showgrid=True),
+        yaxis=dict(showgrid=True),
+        showlegend=False,
     )
 
     return chart

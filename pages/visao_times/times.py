@@ -186,7 +186,7 @@ def render_team_page(df_times, team, view_mode):
                 "PName": "Player Name",
             },
             title="3PM vs 2PM with size proportional to the number of games played",
-        ).update_layout(title_x=0.5)
+        )
 
         chart.update_traces(
             marker=dict(
@@ -205,7 +205,7 @@ def render_team_page(df_times, team, view_mode):
             color="POS",
             labels={"POS": "Position"},
             title="Players per position",
-        ).update_layout(showlegend=False, yaxis_title="Number of players", title_x=0.5)
+        ).update_layout(showlegend=False, yaxis_title="Number of players")
         return histogram
 
     # 10. Que parcela dos pontos ficaram nas mão de cada posição de cada time? Em um gráfico de pizza
@@ -218,7 +218,7 @@ def render_team_page(df_times, team, view_mode):
             template="plotly_dark",
             title="Points made by each position",
             hole=0.5,
-        ).update_layout(title_x=0.5, showlegend=False)
+        ).update_layout(showlegend=False)
         return chart
 
     # ------------------------------------------------------------------------------------------------------------------------
@@ -240,7 +240,7 @@ def render_team_page(df_times, team, view_mode):
                 "PName": "Player Name",
             },
             title="Ball steal vs blocks with size proportional to defensive rebounds",
-        ).update_layout(title_x=0.5)
+        )
 
         chart.update_traces(
             marker=dict(
@@ -259,7 +259,7 @@ def render_team_page(df_times, team, view_mode):
             template="plotly_dark",
             title="Defensive rebounds by each position",
             hole=0.5,
-        ).update_layout(title_x=0.5, showlegend=False)
+        ).update_layout(showlegend=False)
 
         return chart
 
